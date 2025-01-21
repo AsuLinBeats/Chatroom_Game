@@ -11,6 +11,7 @@
 #include <d3d11.h>
 #pragma comment(lib, "d3d11.lib")
 
+#include"Audio.h"
 
 // Data
 static ID3D11Device* g_pd3dDevice = nullptr;
@@ -30,6 +31,9 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 // Main code
 int main(int, char**)
 {
+    //! Audio initialisation
+    Audio sfxSys;
+    sfxSys.init();
     // Create application window    
     //ImGui_ImplWin32_EnableDpiAwareness();
     WNDCLASSEXW wc = { sizeof(wc), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(nullptr), nullptr, nullptr, nullptr, nullptr, L"ImGui Example", nullptr };
@@ -124,6 +128,7 @@ int main(int, char**)
         ImGui::NewFrame();
 
         // Drawing code
+        // control booleans
 		static bool windows_open = true;
 		static bool test = false;
 		static int a = 0;
@@ -137,6 +142,8 @@ int main(int, char**)
 
             if (ImGui::Button(u8"°´Å¥", ImVec2(50, 50))) {
 				MessageBoxA(NULL, "Hello, world!", "Hello", MB_OK);
+                sfxSys.playMusic(); // not work???
+
             }
 			ImGui::SameLine();
             if (ImGui::Button(u8"°´Å¥2", ImVec2(50, 50))) {
@@ -162,6 +169,8 @@ int main(int, char**)
 
 			ImGui::GetForegroundDrawList()->AddText(ImVec2(600, 600), ImColor(255, 0, 0, 255), "Hello, world!");
             
+
+            // external rendering
             ImGui::End();
         }
         
