@@ -6,7 +6,8 @@
 #include "ImGui/imstb_rectpack.h"
 #include "ImGui/imstb_textedit.h"
 #include "ImGui/imstb_truetype.h"
-
+#include<vector>
+#include"Audio.h"
 namespace MyUI {
 	class ChatMessage {
 	public:
@@ -127,17 +128,19 @@ namespace MyUI {
 
 	
 	
-	bool RenderUI() {
+	bool RenderUI(Audio sfxSys) {
 		static bool publicChat = true;
 		static bool privateChat = false;
 		static bool gameChat = false;
 		ChatBox publicChatBox;
+		
 		ImGui::ShowDemoWindow();
 
 		if (publicChat) {
 
 			if (ImGui::Begin("Public Chatroom", &publicChat)) {
-
+				sfxSys.init();
+				sfxSys.playMusic1();
 				// network section to control?
 				// button to private chat
 				ImGui::SetCursorPos(ImVec2(20, 40));

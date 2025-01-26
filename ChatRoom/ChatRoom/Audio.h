@@ -12,11 +12,32 @@
 
 class Audio {
 	FMOD::System* system;
+	FMOD::Sound* sound;
+	FMOD::Channel* channel;
+	bool isplaying = false;
 public:
 	void init() {
-		FMOD::System_Create(&system);
-		system->init(512, FMOD_INIT_NORMAL, NULL);
+		if (isplaying == false) {
+			FMOD::System_Create(&system);
+			system->init(512, FMOD_INIT_NORMAL, NULL);
+			sound = NULL;
+			channel = NULL;
+			// system->createSound("Audio/notice1.wav", FMOD_DEFAULT, NULL, &sound);
+			system->createSound("Audio/music.mp3", FMOD_DEFAULT, NULL, &sound);
+		}
 	}
+
+	void playMusic1() {
+		if (channel == nullptr || !channel->isPlaying(&isplaying) ){ // Only play if no music is currently playing
+			system->playSound(sound, nullptr, false, &channel);
+			isplaying = true;
+			if (channel) {
+				channel->setVolume(1.0f); 
+			}
+		}
+	}
+
+
 	FMOD_RESULT F_CALLBACK sineCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int
 		inchannels, int* outchannels)
 	{
@@ -37,13 +58,21 @@ public:
 		return FMOD_OK;
 	}
 
-	void playMusic() {
+	void playMusicPrivate() {
+		float volume = 1.0f;
+		channel->setVolume(volume);
+		system->set3DSettings(10.f, 10.f, 10.f);
+		
+		system->playSound(sound, NULL, false, &channel);
+	}
+
+	void playMusicPublic() {
 		FMOD::Sound* sound = NULL;
 		FMOD::Channel* channel = NULL;
 		float volume = 1.0f;
 		channel->setVolume(volume);
 		system->set3DSettings(10.f, 10.f, 10.f);
-		system->createSound("music.mp3", FMOD_DEFAULT, NULL, &sound);
+		system->createSound("Audio/notice2.wav", FMOD_DEFAULT, NULL, &sound);
 		system->playSound(sound, NULL, false, &channel);
 	}
 
@@ -107,6 +136,16 @@ public:
 		}
 	}
 
+	void playMusic() {
+		FMOD::Sound* sound = NULL;
+		FMOD::Channel* channel = NULL;
+		float volume = 1.0f;
+		channel->setVolume(volume);
+		system->set3DSettings(10.f, 10.f, 10.f);
+		system->createSound("Audio/music.mp3", FMOD_DEFAULT, NULL, &sound);
+		system->playSound(sound, NULL, false, &channel);
+
+	}
 	void RIR() {
 
 	}
@@ -120,4 +159,16 @@ public:
 		}
 	}
 
+	//void play() {
+	//	// initialise fmod sys
+	//	FMOD::System* system;
+	//	FMOD::System_Create(&system);
+	//	system->init(512, FMOD_INIT_NORMAL, NULL);
+
+	//	playMusicPublic();
+	//	// playMusicPrivate();
+	//	// sineWave(system);
+	//	system->close();
+	//	system->release();
+	//}
 };
