@@ -8,4 +8,6 @@ C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Audio.h(30,19): warning C43
 C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Audio.h(100,18): warning C4305: '-=': truncation from 'double' to 'float'
   (compiling source file 'Main.cpp')
   
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Main.cpp(25,21): warning C4244: 'initializing': conversion from 'DWORD' to 'const char', possible loss of data
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(252,1): warning C4715: 'MyUI::RenderUI': not all control paths return a value
   ChatRoom.vcxproj -> C:\Users\Davi\source\Chatroom_Game\ChatRoom\x64\Debug\ChatRoom.exe

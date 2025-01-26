@@ -1,3 +1,4 @@
+// chatroom client
 #include "ImGui/imconfig.h"
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_win32.h"
@@ -6,12 +7,46 @@
 #include "ImGui/imstb_rectpack.h"
 #include "ImGui/imstb_textedit.h"
 #include "ImGui/imstb_truetype.h"
-
-
+#include <chrono>
+#include<ctime>
 #include <d3d11.h>
 #pragma comment(lib, "d3d11.lib")
 
 #include"Audio.h"
+#include"UI.h"
+struct Message {
+    // link to server
+    std::string sender; // the display name
+    
+    std::string content;
+    const char time;
+    std::string IP; // the IP from client device
+
+    Message() : time(GetCurrentTime()) {};
+private:
+    std::string GetLocalTime() {
+        auto now = std::chrono::system_clock::now();
+        std::time_t local_time = std::chrono::system_clock::to_time_t(now);
+        char buffer[26];
+        ctime_s(buffer, sizeof(buffer), &local_time);
+        return std::string(buffer);
+    }
+};
+
+class Chat {
+    // controls message interaction with UI
+    void messageReceived() {
+        // render and display message received
+    }
+};
+
+
+// Chat application state
+struct ChatState {
+    std::vector<Message> messages; // List of chat messages
+    char inputBuffer[256] = "";    // Buffer for user input
+};
+
 
 // Data
 static ID3D11Device* g_pd3dDevice = nullptr;
@@ -80,7 +115,8 @@ int main(int, char**)
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Roboto-Medium.ttf", 16.0f);
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
-    ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\SIMSUN.ttc", 18.f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
+    // ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\SIMSUN.ttc", 18.f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
+    ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\msyh.ttc", 18.f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
     //IM_ASSERT(font != nullptr);
 
     // Our state
@@ -90,6 +126,7 @@ int main(int, char**)
 
     // Main loop
     bool done = false;
+    bool running = true;
     while (!done)
     {
         // Poll and handle messages (inputs, window resize, etc.)
@@ -127,61 +164,66 @@ int main(int, char**)
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
-        // Drawing code
-        // control booleans
-		static bool windows_open = true;
-		static bool test = false;
-		static int a = 0;
-		static float b = 0.f;
-        static char butter[1024];
-        if (windows_open) {
-            ImGui::Begin(u8"ImGUI 菜单", &windows_open);
-			ImGui::Text(u8"你好");
-			ImGui::TextColored(ImColor(0,245,255,255), u8"Hello, world!");
-            ImGui::BulletText(u8"你好呀");
+      //! Drawing code
+  //      // control booleans
+		//static bool windows_open = true;
+		//static bool test = false;
+		//static int a = 0;
+		//static float b = 0.f;
+  //      static char butter[1024];
+  //      static bool privateChat = false;
 
-            if (ImGui::Button(u8"按钮", ImVec2(50, 50))) {
-				MessageBoxA(NULL, "Hello, world!", "Hello", MB_OK);
-                sfxSys.playMusic(); // not work???
+  //      if (windows_open) {
+  //          ImGui::Begin("Chatroom", &windows_open);
 
-            }
-			ImGui::SameLine();
-            if (ImGui::Button(u8"按钮2", ImVec2(50, 50))) {
-                MessageBoxA(NULL, "Hello, world!2", "Hello2", MB_OK);
-            }
-			ImGui::Checkbox(u8"复选框", &test);
+		//	ImGui::Text(u8"你好");
+		//	ImGui::TextColored(ImColor(0,245,255,255), u8"Hello, world!");
+  //          ImGui::BulletText(u8"你好呀");
 
-			ImGui::RadioButton(u8"单选框0",&a,0);
-			ImGui::RadioButton(u8"单选框1",&a,1);
-			ImGui::RadioButton(u8"单选框2",&a,2);
+  //          if (ImGui::Button(u8"按钮", ImVec2(50, 50))) {
+		//		MessageBoxA(NULL, "Hello, world!", "Hello", MB_OK);
+  //              sfxSys.playMusic(); // not work???
 
-			ImGui::DragFloat(u8"拖拽浮点", &b, 0.1f, 0.f, 6.f);
-			ImGui::SliderFloat(u8"滑动条", &b, 0.f, 6.f);
-            ImGui::InputText(u8"输入框", butter, sizeof(butter));
+  //          }
+		//	ImGui::SameLine();
+  //          if (ImGui::Button(u8"按钮2", ImVec2(50, 50))) {
+  //              MessageBoxA(NULL, "Hello, world!2", "Hello2", MB_OK);
+  //          }
+		//	ImGui::Checkbox(u8"复选框", &test);
+
+		//	ImGui::RadioButton(u8"单选框0",&a,0);
+		//	ImGui::RadioButton(u8"单选框1",&a,1);
+		//	ImGui::RadioButton(u8"单选框2",&a,2);
+
+		//	ImGui::DragFloat(u8"拖拽浮点", &b, 0.1f, 0.f, 6.f);
+		//	ImGui::SliderFloat(u8"滑动条", &b, 0.f, 6.f);
+  //          ImGui::InputText(u8"输入框", butter, sizeof(butter));
 
 
-            // Graphic
-			ImGui::GetForegroundDrawList()->AddLine(ImVec2(100, 100), ImVec2(100, 200), ImColor(255, 0, 0, 255),1.f);
-            
-            ImGui::GetBackgroundDrawList()->AddRectFilled(ImVec2(0, 0), ImVec2(300, 300), ImColor(240, 255, 255, 255),15.f);
-           
-            ImGui::GetBackgroundDrawList()->AddCircle(ImVec2(500, 500), 15.f, ImColor(255, 240, 255, 255));
+  //          // Graphic
+		//	ImGui::GetForegroundDrawList()->AddLine(ImVec2(100, 100), ImVec2(100, 200), ImColor(255, 0, 0, 255),1.f);
+  //          
+  //          ImGui::GetBackgroundDrawList()->AddRectFilled(ImVec2(0, 0), ImVec2(300, 300), ImColor(240, 255, 255, 255),15.f);
+  //         
+  //          ImGui::GetBackgroundDrawList()->AddCircle(ImVec2(500, 500), 15.f, ImColor(255, 240, 255, 255));
 
-			ImGui::GetForegroundDrawList()->AddText(ImVec2(600, 600), ImColor(255, 0, 0, 255), "Hello, world!");
-            
+		//	ImGui::GetForegroundDrawList()->AddText(ImVec2(600, 600), ImColor(255, 0, 0, 255), "Hello, world!");
+  //          
 
-            // external rendering
-            ImGui::End();
-        }
-        
+  //          // external rendering
+  //          ImGui::End();
+  //      }
+  //      
 
 
 		
+        
 
 
-
-
-
+        // myUI code
+        if (!MyUI::RenderUI()) {
+            running = false; // Exit if RenderUI signals to quit
+        }
         // Rendering
         ImGui::Render();
         const float clear_color_with_alpha[4] = { clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w };
