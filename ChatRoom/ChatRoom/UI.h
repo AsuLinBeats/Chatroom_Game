@@ -15,20 +15,26 @@ namespace MyUI {
 		char message[1024];
 		ChatMessage(const char* defaultSender = "Alice") {
 			strncpy_s(sender, defaultSender, sizeof(sender) - 1);
-			
 		}
 	};
 
 	
 
 	// key parameter
+	static std::vector<std::string> currentUser = {"Alice","Miku","Luna"}; // should get from server
+	std::string userSelected;
+
 	static char inputs[1024]; // input text
-	static char inputSender[256]; // input text
+	char inputSender[128]; // input text
 	static std::vector<ChatMessage> chatMessages; // store all chat message
 
 	static char privateInputs[1024]; // input text
 	static char privateInputSender[256]; // input text
 	static std::vector<ChatMessage> privateChatMessages; // store all chat message
+
+	static bool popupwin = true;
+	static bool nameValid = false;
+	static char inputName[128];
 
 	class ChatBox {
 	public:
@@ -61,7 +67,7 @@ namespace MyUI {
 			// Add some notification
 			
 			// display chat box
-			ImGui::BeginChild("ChatBox", ImVec2(0, 300), true, ImGuiWindowFlags_HorizontalScrollbar);
+			ImGui::BeginChild(("This is Private chat with "+ userSelected).c_str(), ImVec2(0, 300), true, ImGuiWindowFlags_HorizontalScrollbar);
 			//const auto& firstMessage = chatMessages.front(); // extract first vector
 			//ImGui::Text("This is a private chat window with %s", firstMessage.sender);
 			ImGui::Text("Connecting....");
@@ -126,9 +132,28 @@ namespace MyUI {
 		}
 	}
 
-	
+	void Register() {
+
+	}
 	
 	bool RenderUI(Audio sfxSys) {
+		/*if (popupwin) {
+			ImGui::OpenPopup("Please set your name");
+			ImVec2 centre = ImGui::GetMainViewport()->GetCenter();
+			ImGui::SetNextWindowPos(centre, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+			
+			ImGui::InputTextWithHint(" ", "Enter your name", inputName, IM_ARRAYSIZE(inputName));
+			if (ImGui::Button("х╥хо", ImVec2(80, 25))) {
+				if (strlen(inputName) > 0) {
+					nameValid = true;
+					popupwin = false;
+					strncpy_s(inputSender, inputName, sizeof(inputSender) - 1);
+				}
+
+			}
+			ImGui::EndPopup();
+
+		}*/
 		static bool publicChat = true;
 		static bool privateChat = false;
 		static bool gameChat = false;
@@ -143,28 +168,30 @@ namespace MyUI {
 				sfxSys.playMusic1();
 				// network section to control?
 				// button to private chat
-				ImGui::SetCursorPos(ImVec2(20, 40));
-				if (ImGui::Button("User1", ImVec2(60, 30))) {
-					privateChat = true;	
+
+				ImGui::BeginChild("user list",ImVec2(100,500),true);
+
+				for (const auto& user : currentUser) {
+					if (ImGui::Selectable(user.c_str(), userSelected == user.c_str(), NULL, ImVec2(50, 15))) {
+						userSelected = user;
+						privateChat = true;
+					}
+					
+					// notice when mouse hover
+					if (ImGui::IsItemHovered()) {
+						ImGui::SetTooltip("Click to start a private chat", user.c_str());
+					}
 				}
 
-				ImGui::SetCursorPos(ImVec2(20, 90));
-				if (ImGui::Button("User2", ImVec2(60, 30))) {
-					privateChat = true;
-				}
+				ImGui::EndChild();
 
-				ImGui::SetCursorPos(ImVec2(20, 140));
-				if (ImGui::Button("User3", ImVec2(60, 30))) {
-					privateChat = true;
-				}
-
-				ImGui::SetCursorPos(ImVec2(20, 300));
-				if (ImGui::Button("????", ImVec2(20, 20))) {
-					gameChat = true;
-				}
 				
 			}
-
+			// copy contents of userSelected to inputsender
+			//! THIS IS ABSOLUTELY WRONG TO USE USERSE;ECTED NAME AS SENDER NAME, BUT IT TESTS SOMETHING.
+			//strncpy_s(inputSender, userSelected.c_str(), sizeof(inputSender) - 1);
+			////inputSender[sizeof(inputSender) - 1] = '\0'; 
+			
 			// public chat room
 			ImGui::SetCursorPos(ImVec2(100, 320));
 			ImGui::SetNextItemWidth(350.f);
@@ -191,7 +218,7 @@ namespace MyUI {
 	
 		// sub windows of public, private chat
 		if (privateChat) {
-			if (ImGui::Begin("Private Chat with ...", &privateChat)) {
+			if (ImGui::Begin(("Private chat with "+ userSelected).c_str(), &privateChat)) {
 				privateChatBox privateChat;
 				privateChat.init(privateChatMessages);
 
@@ -216,7 +243,7 @@ namespace MyUI {
 		
 		if (gameChat) {
 			if (ImGui::Begin("....c..h....t....w...i.....h....Ru...K.ia", &gameChat)) {
-			
+				// INVOKE GAME LOGIC
 			}
 			ImGui::End();
 		}
