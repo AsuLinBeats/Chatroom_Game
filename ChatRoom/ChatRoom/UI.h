@@ -8,6 +8,7 @@
 #include "ImGui/imstb_truetype.h"
 #include<vector>
 #include"Audio.h"
+
 namespace MyUI {
 	class ChatMessage {
 	public:
@@ -17,9 +18,6 @@ namespace MyUI {
 			strncpy_s(sender, defaultSender, sizeof(sender) - 1);
 		}
 	};
-
-	
-
 	// key parameter
 	static std::vector<std::string> currentUser = {"Alice","Miku","Luna"}; // should get from server
 	std::string userSelected;
@@ -34,11 +32,14 @@ namespace MyUI {
 
 	static bool popupwin = true;
 	static bool nameValid = false;
-	static char inputName[128];
+	// static char inputName[128];
+
+
 
 	class ChatBox {
 	public:
 		virtual void init(std::vector<ChatMessage> chatMessages) {
+
 			// the display chat box
 			ImGui::BeginChild("ChatBox", ImVec2(0, 300), true, ImGuiWindowFlags_HorizontalScrollbar);
 			ImGui::Text("System: Welcome to Public Chatroom..");
@@ -65,7 +66,6 @@ namespace MyUI {
 	public:
 		void init(std::vector<ChatMessage> chatMessages) override {
 			// Add some notification
-			
 			// display chat box
 			ImGui::BeginChild(("This is Private chat with "+ userSelected).c_str(), ImVec2(0, 300), true, ImGuiWindowFlags_HorizontalScrollbar);
 			//const auto& firstMessage = chatMessages.front(); // extract first vector
@@ -132,31 +132,69 @@ namespace MyUI {
 		}
 	}
 
-	void Register() {
+	bool RegisterUI() {
+			static bool registerWin = true; // 控制注册窗口显示
+			static char inputName[128] = ""; // 存储用户名输入
+
+			if (registerWin) {
+				ImGui::SetNextWindowSize(ImVec2(300, 100)); // 设置合适的大小
+				if (ImGui::Begin("Register", &registerWin, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
+					ImGui::InputTextWithHint("##name", "Enter your name", inputName, IM_ARRAYSIZE(inputName));
+					if (ImGui::Button("Submit")) {
+						if (strlen(inputName) > 0) {
+							// Add user to list so it will appear auto
+							currentUser.emplace_back(inputName);
+
+							strncpy_s(inputSender, inputName, sizeof(inputSender));
+							inputSender[sizeof(inputSender) - 1] = '\0'; // 
+							registerWin = false; // 
+						}
+					}
+					ImGui::End();
+				}
+				return true; // 
+			}
 
 	}
 	
 	bool RenderUI(Audio sfxSys) {
-		/*if (popupwin) {
-			ImGui::OpenPopup("Please set your name");
-			ImVec2 centre = ImGui::GetMainViewport()->GetCenter();
-			ImGui::SetNextWindowPos(centre, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
-			
-			ImGui::InputTextWithHint(" ", "Enter your name", inputName, IM_ARRAYSIZE(inputName));
-			if (ImGui::Button("确认", ImVec2(80, 25))) {
-				if (strlen(inputName) > 0) {
-					nameValid = true;
-					popupwin = false;
-					strncpy_s(inputSender, inputName, sizeof(inputSender) - 1);
+		//Register();
+
+		static bool registerWin = true; // control register window
+		static char inputName[128] = ""; // Save input name temporarily
+
+		if (registerWin) {
+			ImGui::SetNextWindowSize(ImVec2(300, 100));
+			if (ImGui::Begin("Register", &registerWin, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
+				ImGui::InputTextWithHint("##name", "Enter your name", inputName, IM_ARRAYSIZE(inputName));
+				if (ImGui::Button("Submit")) {
+					if (strlen(inputName) > 0) {
+						// Add user to list so it will appear auto
+						currentUser.emplace_back(inputName);
+
+						strncpy_s(inputSender, inputName, sizeof(inputSender));
+						inputSender[sizeof(inputSender) - 1] = '\0'; // 
+						registerWin = false; // 
+					}
 				}
-
+				ImGui::End();
 			}
-			ImGui::EndPopup();
-
-		}*/
+			return true; // 
+		}
+	
 		static bool publicChat = true;
 		static bool privateChat = false;
 		static bool gameChat = false;
+		static bool temp = false;
+		//if (registerWin) {
+
+		//	if (ImGui::Begin("Register", &registerWin)) {
+		//		ImGui::InputTextWithHint(" ", "Enter your name here", inputName, IM_ARRAYSIZE(inputName));
+		//		currentUser.emplace_back(inputName);
+		//		ImGui::End();
+		//	}
+		//}
+
 		ChatBox publicChatBox;
 		
 		ImGui::ShowDemoWindow();
@@ -164,8 +202,9 @@ namespace MyUI {
 		if (publicChat) {
 
 			if (ImGui::Begin("Public Chatroom", &publicChat)) {
-				sfxSys.init();
-				sfxSys.playMusic1();
+
+				//sfxSys.init();
+				//sfxSys.playMusic1();
 				// network section to control?
 				// button to private chat
 
@@ -173,8 +212,14 @@ namespace MyUI {
 
 				for (const auto& user : currentUser) {
 					if (ImGui::Selectable(user.c_str(), userSelected == user.c_str(), NULL, ImVec2(50, 15))) {
-						userSelected = user;
-						privateChat = true;
+						if (user != inputName) {
+							userSelected = user;
+							privateChat = true;
+						}
+						else {
+							temp = true;
+							
+						}
 					}
 					
 					// notice when mouse hover
@@ -184,8 +229,14 @@ namespace MyUI {
 				}
 
 				ImGui::EndChild();
+			}
 
-				
+			if (temp) {
+				ImGui::SetNextWindowSize(ImVec2(300, 100));
+				if (ImGui::Begin("Register", &temp, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
+					ImGui::Text("You cannot chat with yourself!!!");
+					ImGui::End();
+				}
 			}
 			// copy contents of userSelected to inputsender
 			//! THIS IS ABSOLUTELY WRONG TO USE USERSE;ECTED NAME AS SENDER NAME, BUT IT TESTS SOMETHING.
@@ -283,3 +334,8 @@ namespace MyUI {
 
 	
 }
+
+class UIconnect {
+
+};
+
