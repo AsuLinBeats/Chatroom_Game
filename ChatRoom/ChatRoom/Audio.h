@@ -1,5 +1,6 @@
 #pragma once
 #define _USE_MATH_DEFINES
+#define M_PI   3.14159265358979323846264338327950288
 #include <fmod.hpp>
 #include <fmod_errors.h>
 #include <cmath>
@@ -22,8 +23,8 @@ public:
 			system->init(512, FMOD_INIT_NORMAL, NULL);
 			sound = NULL;
 			channel = NULL;
-			// system->createSound("Audio/notice1.wav", FMOD_DEFAULT, NULL, &sound);
-			system->createSound("Audio/music.mp3", FMOD_DEFAULT, NULL, &sound);
+			system->createSound("Audio/notice2.wav", FMOD_DEFAULT, NULL, &sound);
+			//system->createSound("Audio/music.mp3", FMOD_DEFAULT, NULL, &sound);
 		}
 	}
 
@@ -136,13 +137,13 @@ public:
 		}
 	}
 
-	void playMusic() {
+	void playMusic(const char * file) {
 		FMOD::Sound* sound = NULL;
 		FMOD::Channel* channel = NULL;
 		float volume = 1.0f;
 		channel->setVolume(volume);
 		system->set3DSettings(10.f, 10.f, 10.f);
-		system->createSound("Audio/music.mp3", FMOD_DEFAULT, NULL, &sound);
+		system->createSound(file, FMOD_DEFAULT, NULL, &sound);
 		system->playSound(sound, NULL, false, &channel);
 
 	}
@@ -151,12 +152,8 @@ public:
 	}
 
 	void Stop() {
-		std::cout << "Press any key to quit" << std::endl;
-		while (true)
-		{
-			std::cin.get();
-			break;
-		}
+		system->close();
+		system->release();
 	}
 
 	//void play() {

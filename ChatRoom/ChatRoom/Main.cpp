@@ -1,4 +1,8 @@
 // chatroom client
+
+#include"UI.h"
+#include"Audio.h"
+
 #include "ImGui/imconfig.h"
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_win32.h"
@@ -12,8 +16,8 @@
 #include <d3d11.h>
 #pragma comment(lib, "d3d11.lib")
 
-#include"Audio.h"
-#include"UI.h"
+
+// #include"Network.h"
 struct Message {
     // link to server
     std::string sender; // the display name
@@ -66,6 +70,8 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 // Main code
 int main(int, char**)
 {
+
+
     //! Audio initialisation
     //Audio sfxSys;
     //sfxSys.init();
@@ -119,8 +125,10 @@ int main(int, char**)
 
     // Main loop
     Audio sfxSys;
+    sfxSys.init();
     bool done = false;
     bool running = true;
+    bool isplaying = false;
     while (!done)
     {
         // Poll and handle messages (inputs, window resize, etc.)
@@ -217,7 +225,7 @@ int main(int, char**)
 
 
         // myUI code
-        if (!MyUI::RenderUI(sfxSys)) {
+        if (!MyUI::RenderUI(sfxSys, isplaying)) {
             running = false; // Exit if RenderUI signals to quit
         }
         // audio test
