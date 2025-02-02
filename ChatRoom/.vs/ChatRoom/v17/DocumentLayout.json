@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\ImGui\\imgui_widgets.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\ImGui\\imgui_widgets.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Network.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,23 +23,8 @@
       "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\UI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\COMMUNITY\\VC\\TOOLS\\MSVC\\14.42.34433\\INCLUDE\\THREAD||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\ImGui\\imgui_widgets.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\ImGui\\imgui_widgets.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Audio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -46,6 +43,9 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\thread||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,17 +55,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "UI.h",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h",
               "RelativeDocumentMoniker": "ChatRoom\\UI.h",
               "ToolTip": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h",
               "RelativeToolTip": "ChatRoom\\UI.h",
-              "ViewState": "AgIAAHMAAAAAAAAAAADwv34AAAACAAAAAAAAAA==",
+              "ViewState": "AgIAABYBAAAAAAAAAAAIwCQBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-21T23:00:42.075Z",
               "IsPinned": true,
@@ -81,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "thread",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\thread",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\thread",
@@ -89,12 +89,11 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\thread",
               "ViewState": "AgIAAC8AAAAAAAAAAAAmwDsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-02T01:26:33.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-02T01:26:33.959Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "UI.cpp",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.cpp",
               "RelativeDocumentMoniker": "ChatRoom\\UI.cpp",
@@ -102,25 +101,24 @@
               "RelativeToolTip": "ChatRoom\\UI.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-30T23:24:42.909Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T23:24:42.909Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Network.h",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h",
               "RelativeDocumentMoniker": "ChatRoom\\Network.h",
               "ToolTip": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h",
               "RelativeToolTip": "ChatRoom\\Network.h",
-              "ViewState": "AgIAAOgAAAAAAAAAAAAIwPgAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAANoAAAAAAAAAAAAIwPcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-30T21:38:04.162Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "imgui_widgets.cpp",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\ImGui\\imgui_widgets.cpp",
               "RelativeDocumentMoniker": "ChatRoom\\ImGui\\imgui_widgets.cpp",
@@ -128,11 +126,12 @@
               "RelativeToolTip": "ChatRoom\\ImGui\\imgui_widgets.cpp",
               "ViewState": "AgIAAFYSAAAAAAAAAAAhwF0SAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-30T20:09:52.316Z"
+              "WhenOpened": "2025-01-30T20:09:52.316Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Server.h",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Server.h",
               "RelativeDocumentMoniker": "ChatRoom\\Server.h",
@@ -140,11 +139,12 @@
               "RelativeToolTip": "ChatRoom\\Server.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-27T21:29:02.37Z"
+              "WhenOpened": "2025-01-27T21:29:02.37Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "Audio.h",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Audio.h",
               "RelativeDocumentMoniker": "ChatRoom\\Audio.h",
@@ -156,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "vector",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\vector",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\vector",
@@ -168,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "imgui.h",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\ImGui\\imgui.h",
               "RelativeDocumentMoniker": "ChatRoom\\ImGui\\imgui.h",
@@ -192,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "Game.h",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Game.h",
               "RelativeDocumentMoniker": "ChatRoom\\Game.h",
@@ -204,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "WS2tcpip.h",
               "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um\\WS2tcpip.h",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um\\WS2tcpip.h",

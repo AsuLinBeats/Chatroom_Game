@@ -114,14 +114,14 @@ namespace MyUI {
 		// avoid send empty message
 		if (inputs[0] != '\0') {
 			//! Logic to send the message
-			ChatMessage newMessage;
+			//ChatMessage newMessage;
 
-			// add content into new message
-			// newMessage.message = inputs;
-			strncpy_s(newMessage.message, inputs,sizeof(newMessage.message)-1);
-			strncpy_s(newMessage.sender, inputsSender,sizeof(newMessage.sender)-1);
+			//// add content into new message
+			//// newMessage.message = inputs;
+			//strncpy_s(newMessage.message, inputs,sizeof(newMessage.message)-1);
+			//strncpy_s(newMessage.sender, inputsSender,sizeof(newMessage.sender)-1);
 
-			chatMessages->push_back(newMessage);
+			//chatMessages->push_back(newMessage);
 			// send to server
 			std::string msg = std::string(std::string(inputsSender) + "|" + inputs + "\n");
 			
@@ -257,6 +257,8 @@ namespace MyUI {
 			if (ImGui::Begin("Register", &registerWin, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
 				ImGui::InputTextWithHint("##name", "Enter your name", inputName, IM_ARRAYSIZE(inputName));
 				if (ImGui::Button("Submit")) {
+					
+					
 					if (strlen(inputName) > 0) {
 						// Add user to list so it will appear auto
 						currentUser.emplace_back(inputName);
@@ -268,6 +270,8 @@ namespace MyUI {
 						if (net.client()) {
 							// MyUI::isConnected = true;
 							strncpy_s(inputSender, inputName, sizeof(inputSender));
+							std::string msg = std::string("|" + std::string(inputName) + "\n");
+							net.Send(msg);
 						}
 					}
 				}
