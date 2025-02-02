@@ -20,7 +20,6 @@
 
 namespace MyUI {
 	Network net;
-
 	//std::mutex userMutex;
 	std::mutex messageMutex;
 
@@ -124,13 +123,13 @@ namespace MyUI {
 
 			chatMessages->push_back(newMessage);
 			// send to server
-			std::string msg = std::string(inputsSender) + "|" + inputs;
+			std::string msg = std::string(std::string(inputsSender) + "|" + inputs);
+			
 			net.Send(msg);
 
 			// Clear the input buffer
 			memset(inputs, 0, sizeof(inputs));
 		}
-		// send(client_sockets, inputs, strlen(inputs), 0);
 	}
 
 	void SystemMessage() {
@@ -154,6 +153,7 @@ namespace MyUI {
 	}
 
 	bool RegisterUI() {
+	
 			static bool registerWin = true; // 控制注册窗口显示
 			static char inputName[128] = ""; // 存储用户名输入
 
@@ -186,10 +186,41 @@ namespace MyUI {
 
 	
 	bool RenderUI(Audio& sfxSys, bool& isplaying) {
-		
+		// Network net;
 		// renew network
+		
+		//auto received = net.GetMessages();
+		//std::lock_guard<std::mutex> lock(messageMutex);
+
+		//for (auto& msg : received) {
+		//	size_t sep = msg.find('|');
+		//	ChatMessage cm;
+		//	if (sep != std::string::npos) {
+		//		strncpy_s(cm.sender, msg.substr(0, sep).c_str(), sizeof(cm.sender) - 1);
+		//		strncpy_s(cm.message, msg.substr(sep + 1).c_str(), sizeof(cm.message) - 1);
+		//	}
+		//	else {
+		//		strncpy_s(cm.sender, "System", sizeof(cm.sender) - 1);
+		//		strncpy_s(cm.message, msg.c_str(), sizeof(cm.message) - 1);
+		//	}
+		//	chatMessages.push_back(cm);
+		//}
+		
+		//auto messages = net.GetMessages();
+		//for (auto& msg : messages) {
+		//	ImGui::Text("[Public] %s", msg.c_str());
+		//}
+		////Register();
+		//static char inputBuf[1024] = { 0 };
+		//if (ImGui::InputText("##Input", inputBuf, sizeof(inputBuf))
+		//	|| ImGui::Button("Send"))
+		//{
+		//	memset(inputBuf, 0, sizeof(inputBuf));
+		//}
+		///////////////////////////////////////////////////////////////////////////////////////
 		auto received = net.GetMessages();
-		std::lock_guard<std::mutex> lock(messageMutex);
+		std::lock_guard<std::mutex> lock(messageMutex); // 如果有多线程访问
+
 
 		for (auto& msg : received) {
 			size_t sep = msg.find('|');
@@ -204,25 +235,6 @@ namespace MyUI {
 			}
 			chatMessages.push_back(cm);
 		}
-		//Network net;
-		//auto messages = net.GetMessages();
-		//for (auto& msg : messages) {
-		//	ImGui::Text("[Public] %s", msg.c_str());
-		//}
-		////Register();
-		//static char inputBuf[1024] = { 0 };
-		//if (ImGui::InputText("##Input", inputBuf, sizeof(inputBuf))
-		//	|| ImGui::Button("Send"))
-		//{
-		//	net.SendMessages(inputBuf);
-		//	memset(inputBuf, 0, sizeof(inputBuf));
-		//}
-
-		//// 显示连接状态
-		//ImGui::TextColored(net.close ?
-		//	ImVec4(0, 1, 0, 1) : ImVec4(1, 0, 0, 1),
-		//	net.close ? "DisConnected" : "connected");
-	
 
 		static bool registerWin = true; // control register window
 		static char inputName[128] = ""; // Save input name temporarily
@@ -269,14 +281,6 @@ namespace MyUI {
 		static bool gameChat = false;
 		static bool temp = false;
 
-		//if (registerWin) {
-
-		//	if (ImGui::Begin("Register", &registerWin)) {
-		//		ImGui::InputTextWithHint(" ", "Enter your name here", inputName, IM_ARRAYSIZE(inputName));
-		//		currentUser.emplace_back(inputName);
-		//		ImGui::End();
-		//	}
-		//}
 		ChatBox publicChatBox;
 		
 		ImGui::ShowDemoWindow();
@@ -284,9 +288,6 @@ namespace MyUI {
 		if (publicChat) {
 
 			if (ImGui::Begin("Public Chatroom", &publicChat)) {
-				
-
-
 
 				// network section to control?
 				// button to private chat

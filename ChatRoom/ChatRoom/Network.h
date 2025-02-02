@@ -16,11 +16,124 @@
 
 
 #define DEFAULT_BUFFER_SIZE 1024
+//
+//class Network {
+//    WSADATA wsaData;
+//    bool wsaInitialized = false;
+//    SOCKET clientSocket = INVALID_SOCKET;
+//
+//    inline static std::vector<std::string> messageQueue;
+//    inline static std::mutex queueMutex;
+//
+//public:
+//    std::atomic<bool> close = false;
+//    std::atomic<bool> isConnected = false;
+//
+//    Network() {
+//        if (WSAStartup(MAKEWORD(2, 2), &wsaData) == 0) {
+//            wsaInitialized = true;
+//        }
+//        else {
+//            std::cerr << "WSAStartup failed: " << WSAGetLastError() << std::endl;
+//        }
+//    }
+//
+//    ~Network() {
+//        Disconnect();
+//        if (wsaInitialized) {
+//            WSACleanup();
+//        }
+//    }
+//
+//    void Disconnect() {
+//        close = true;
+//        isConnected = false;
+//        if (clientSocket != INVALID_SOCKET) {
+//            closesocket(clientSocket);
+//            clientSocket = INVALID_SOCKET;
+//        }
+//    }
+//
+//    bool client(const char* host = "127.0.0.1", unsigned int port = 65432) {
+//        if (!wsaInitialized) return false;
+//
+//        clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+//        if (clientSocket == INVALID_SOCKET) {
+//            std::cerr << "Socket failed: " << WSAGetLastError() << std::endl;
+//            return false;
+//        }
+//
+//        sockaddr_in server_address = {};
+//        server_address.sin_family = AF_INET;
+//        server_address.sin_port = htons(port);
+//        if (inet_pton(AF_INET, host, &server_address.sin_addr) <= 0) {
+//            std::cerr << "Invalid address" << std::endl;
+//            closesocket(clientSocket);
+//            return false;
+//        }
+//
+//        if (connect(clientSocket, (sockaddr*)&server_address, sizeof(server_address)) == SOCKET_ERROR) {
+//            std::cerr << "Connect failed: " << WSAGetLastError() << std::endl;
+//
+//            closesocket(clientSocket);
+//            return false;
+//        }
+//
+//        isConnected = true;
+//        close = false;
+//        std::thread(&Network::Receive, this).detach();
+//        return true;
+//    }
+//
+//    void Send(const std::string& sentence) {
+//        if (!isConnected || close) return;
+//
+//        int result = send(clientSocket, sentence.c_str(), sentence.size(), 0);
+//        if (result == SOCKET_ERROR) {
+//            std::cerr << "Send failed: " << WSAGetLastError() << std::endl;
+//            Disconnect();
+//        }
+//    }
+//
+//    void Receive() {
+//        char buffer[1024];
+//        while (!close) {
+//            int bytes = recv(clientSocket, buffer, sizeof(buffer) - 1, 0);
+//            if (bytes > 0) {
+//                buffer[bytes] = 0;
+//                std::lock_guard<std::mutex> lock(queueMutex);
+//                messageQueue.push_back(buffer);
+//            }
+//            else if (bytes == 0) {
+//                std::cout << "Connection closed\n";
+//                Disconnect();
+//                break;
+//            }
+//            else {
+//                if (!close) {
+//                    std::cerr << "Receive error: " << WSAGetLastError() << std::endl;
+//                    Disconnect();
+//                }
+//                break;
+//            }
+//        }
+//    }
+//
+//    std::vector<std::string> GetMessages() {
+//        std::lock_guard<std::mutex> lock(queueMutex);
+//        auto copy = messageQueue;
+//        messageQueue.clear();
+//        return copy;
+//    }
+//};
+
+
+
 
 class Network {
     // SOCKET clientSocket = INVALID_SOCKET;
-    static std::vector<std::string> messageQueue;
-    static std::mutex queueMutex;
+    inline static std::vector<std::string> messageQueue;
+    inline static std::mutex queueMutex;
     SOCKET clientSocket = INVALID_SOCKET;
 
 
@@ -33,36 +146,16 @@ public:
         while (!close) {
             if (isConnected && !close) {
                 send(clientSocket, sentence.c_str(), sentence.size(), 0);
+                break;
             }
         }
         closesocket(clientSocket);
 
     }
 
+   
+
     void Receive(SOCKET clientSocket) {
-        //int count = 0;
-        //while (!close) {
-        //    // Receive the reversed sentence from the server
-        //    char buffer[DEFAULT_BUFFER_SIZE] = { 0 };
-        //    int bytes_received = recv(clientSocket, buffer, DEFAULT_BUFFER_SIZE - 1, 0);
-        //    if (bytes_received > 0) {
-        //        std::cout << "[Public] " << buffer << std::endl;
-        //        buffer[bytes_received] = '\0'; // Null-terminate the received data
-        //        std::cout << "Received(" << count++ << "): " << buffer << std::endl;
-        //    }
-        //    else if (bytes_received == 0) {
-        //        std::cout << "Connection closed by server." << std::endl;
-        //    }
-        //    else if (close) {
-        //        std::cout << "Terminating connection\n";
-        //    }
-        //    else {
-        //        std::cerr << "Receive failed with error: " << WSAGetLastError() << std::endl;
-        //    }
-        //    if (strcmp(buffer, "!bye") == 0) {
-        //        close = true;
-        //    }
-        //}
 
         char buffer[1024];
         while (!close) {

@@ -1,5 +1,5 @@
 ﻿  Main.cpp
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(35,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(148,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Main.cpp')
   
 C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Audio.h(50,37): warning C4305: '+=': truncation from 'double' to 'float'
@@ -13,7 +13,5 @@ C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Audio.h(130,18): warning C4
   
 C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Main.cpp(29,21): warning C4244: 'initializing': conversion from 'DWORD' to 'const char', possible loss of data
 C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(179,1): warning C4715: 'MyUI::RegisterUI': not all control paths return a value
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(419,1): warning C4715: 'MyUI::RenderUI': not all control paths return a value
-Main.obj : error LNK2001: unresolved external symbol "private: static class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > Network::messageQueue" (?messageQueue@Network@@0V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A)
-Main.obj : error LNK2001: unresolved external symbol "private: static class std::mutex Network::queueMutex" (?queueMutex@Network@@0Vmutex@std@@A)
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\x64\Debug\ChatRoom.exe : fatal error LNK1120: 2 unresolved externals
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(420,1): warning C4715: 'MyUI::RenderUI': not all control paths return a value
+  ChatRoom.vcxproj -> C:\Users\Davi\source\Chatroom_Game\ChatRoom\x64\Debug\ChatRoom.exe
