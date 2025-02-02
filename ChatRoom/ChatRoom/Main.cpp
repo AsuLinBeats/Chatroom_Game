@@ -1,7 +1,7 @@
 // chatroom client
 
 #include"UI.h"
-#include"Audio.h"
+// #include"Audio.h"
 
 #include "ImGui/imconfig.h"
 #include "ImGui/imgui.h"
@@ -124,8 +124,9 @@ int main(int, char**)
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // Main loop
-    Audio sfxSys;
-    sfxSys.init();
+    // Audio sfxSys;
+    //sfxSys.init();
+    
     bool done = false;
     bool running = true;
     bool isplaying = false;
@@ -225,7 +226,11 @@ int main(int, char**)
 
 
         // myUI code
-        if (!MyUI::RenderUI(sfxSys, isplaying)) {
+        //if (!MyUI::RenderUI(sfxSys, isplaying)) {
+        //    running = false; // Exit if RenderUI signals to quit
+        //}
+
+        if (!MyUI::RenderUI(isplaying)) {
             running = false; // Exit if RenderUI signals to quit
         }
         // audio test

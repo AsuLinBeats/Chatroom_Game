@@ -13,7 +13,7 @@
 #include "ImGui/imstb_truetype.h"
 
 #include<vector>
-#include"Audio.h"
+// #include"Audio.h"
 #include <mutex>
 // #include"Network.h"
 
@@ -177,55 +177,39 @@ namespace MyUI {
 			}
 
 	}
-	void playsound(Audio& sfxSys, const char* file, bool& isplaying) {
-		if (!isplaying) {
-			sfxSys.playMusic(file);
-			isplaying = true;
-		}
+
+
+	/*void playsoundS(Audio& sfxSys) {
+	
+			sfxSys.playMusicSend();
+
 	}
 
-	
-	bool RenderUI(Audio& sfxSys, bool& isplaying) {
-		// Network net;
-		// renew network
+	void playsoundR(Audio& sfxSys) {
 		
-		//auto received = net.GetMessages();
-		//std::lock_guard<std::mutex> lock(messageMutex);
+			sfxSys.playMusicRec();
+	}*/
 
-		//for (auto& msg : received) {
-		//	size_t sep = msg.find('|');
-		//	ChatMessage cm;
-		//	if (sep != std::string::npos) {
-		//		strncpy_s(cm.sender, msg.substr(0, sep).c_str(), sizeof(cm.sender) - 1);
-		//		strncpy_s(cm.message, msg.substr(sep + 1).c_str(), sizeof(cm.message) - 1);
-		//	}
-		//	else {
-		//		strncpy_s(cm.sender, "System", sizeof(cm.sender) - 1);
-		//		strncpy_s(cm.message, msg.c_str(), sizeof(cm.message) - 1);
-		//	}
-		//	chatMessages.push_back(cm);
-		//}
-		
-		//auto messages = net.GetMessages();
-		//for (auto& msg : messages) {
-		//	ImGui::Text("[Public] %s", msg.c_str());
-		//}
-		////Register();
-		//static char inputBuf[1024] = { 0 };
-		//if (ImGui::InputText("##Input", inputBuf, sizeof(inputBuf))
-		//	|| ImGui::Button("Send"))
-		//{
-		//	memset(inputBuf, 0, sizeof(inputBuf));
-		//}
+	
+	bool RenderUI(bool& isplaying) {
+	
 		///////////////////////////////////////////////////////////////////////////////////////
 		auto received = net.GetMessages();
-		std::lock_guard<std::mutex> lock(messageMutex); // 如果有多线程访问
+		std::lock_guard<std::mutex> lock(messageMutex); 
 
 
 		for (auto& msg : received) {
 			size_t sep = msg.find('|');
 			ChatMessage cm;
 			if (sep != std::string::npos) {
+				// Extract and check sender, only play receive sfx if sender is different with user
+				std::string remoteSender = msg.substr(0, sep); 
+				std::string content = msg.substr(sep + 1);
+				
+				if (remoteSender != inputSender) { 
+					// playsoundR(sfxSys);
+				}
+
 				strncpy_s(cm.sender, msg.substr(0, sep).c_str(), sizeof(cm.sender) - 1);
 				strncpy_s(cm.message, msg.substr(sep + 1).c_str(), sizeof(cm.message) - 1);
 			}
@@ -234,6 +218,7 @@ namespace MyUI {
 				strncpy_s(cm.message, msg.c_str(), sizeof(cm.message) - 1);
 			}
 			chatMessages.push_back(cm);
+
 		}
 
 		static bool registerWin = true; // control register window
@@ -339,7 +324,8 @@ namespace MyUI {
 			ImGui::SetCursorPos(ImVec2(480, 320));
 			if (ImGui::Button("Send", ImVec2(50, 25))) {
 				SendMessages(inputs,inputSender,&chatMessages);
-				playsound(sfxSys, "Audio/notice1.wav", isplaying);
+				//playsoundS(sfxSys);
+				
 			}
 			ImGui::SetCursorPos(ImVec2(540, 320));
 			if (ImGui::Button("Cancel", ImVec2(50, 25))) {
@@ -347,7 +333,7 @@ namespace MyUI {
 			}
 			if (ImGui::IsKeyPressed(ImGuiKey_Enter,false)) {
 				SendMessages(inputs, inputSender, &chatMessages);
-				playsound(sfxSys, "Audio/notice3.wav", isplaying);
+				//playsoundS(sfxSys);
 			}
 			ImGui::SetCursorPos(ImVec2(100, 20));
 			ImGui::SetNextItemWidth(220.f);
@@ -370,7 +356,8 @@ namespace MyUI {
 				// logic function....
 				ImGui::SetCursorPos(ImVec2(400, 350));
 				if (ImGui::Button("Send", ImVec2(50, 25))) {
-					SendMessages(privateInputs,privateInputSender, &privateChatMessages);
+					std::string pmCommand = "/pm " + userSelected + " " + std::string(privateInputs);
+					net.Send(pmCommand + "\n");
 				}
 				ImGui::SetCursorPos(ImVec2(460, 350));
 				if (ImGui::Button("Cancel", ImVec2(50, 25))) {

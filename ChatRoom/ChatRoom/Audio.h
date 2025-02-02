@@ -13,7 +13,8 @@
 
 class Audio {
 	FMOD::System* system;
-	FMOD::Sound* sound;
+	FMOD::Sound* soundSend;
+	FMOD::Sound* soundRec;
 	FMOD::Channel* channel;
 	bool isplaying = false;
 public:
@@ -21,22 +22,24 @@ public:
 		if (isplaying == false) {
 			FMOD::System_Create(&system);
 			system->init(512, FMOD_INIT_NORMAL, NULL);
-			sound = NULL;
+			soundSend = NULL;
+			soundRec = NULL;
 			channel = NULL;
-			system->createSound("Audio/notice2.wav", FMOD_DEFAULT, NULL, &sound);
+			system->createSound("Audio/notice2.wav", FMOD_DEFAULT, NULL, &soundSend);
+			system->createSound("Audio/notice3.wav", FMOD_DEFAULT, NULL, &soundRec);
 			//system->createSound("Audio/music.mp3", FMOD_DEFAULT, NULL, &sound);
 		}
 	}
 
-	void playMusic1() {
-		if (channel == nullptr || !channel->isPlaying(&isplaying) ){ // Only play if no music is currently playing
-			system->playSound(sound, nullptr, false, &channel);
-			isplaying = true;
-			if (channel) {
-				channel->setVolume(1.0f); 
-			}
-		}
-	}
+	//void playMusic1() {
+	//	if (channel == nullptr || !channel->isPlaying(&isplaying) ){ // Only play if no music is currently playing
+	//		system->playSound(sound, nullptr, false, &channel);
+	//		isplaying = true;
+	//		if (channel) {
+	//			channel->setVolume(1.0f); 
+	//		}
+	//	}
+	//}
 
 
 	FMOD_RESULT F_CALLBACK sineCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int
@@ -59,14 +62,22 @@ public:
 		return FMOD_OK;
 	}
 
-	void playMusicPrivate() {
-		float volume = 1.0f;
-		channel->setVolume(volume);
-		system->set3DSettings(10.f, 10.f, 10.f);
-		
-		system->playSound(sound, NULL, false, &channel);
+	void playMusicSend() {
+		FMOD::Channel* channel = nullptr;
+		system->playSound(soundSend, 0, false, &channel);
+		if (channel) {
+			channel->setVolume(1.0f);
+		}
 	}
 
+
+	void playMusicRec() {
+		FMOD::Channel* channel = nullptr;
+		system->playSound(soundRec, 0, false, &channel);
+		if (channel) {
+			channel->setVolume(1.0f);
+		}
+	}
 	void playMusicPublic() {
 		FMOD::Sound* sound = NULL;
 		FMOD::Channel* channel = NULL;
@@ -145,8 +156,8 @@ public:
 		system->set3DSettings(10.f, 10.f, 10.f);
 		system->createSound(file, FMOD_DEFAULT, NULL, &sound);
 		system->playSound(sound, NULL, false, &channel);
-
 	}
+
 	void RIR() {
 
 	}
@@ -155,17 +166,4 @@ public:
 		system->close();
 		system->release();
 	}
-
-	//void play() {
-	//	// initialise fmod sys
-	//	FMOD::System* system;
-	//	FMOD::System_Create(&system);
-	//	system->init(512, FMOD_INIT_NORMAL, NULL);
-
-	//	playMusicPublic();
-	//	// playMusicPrivate();
-	//	// sineWave(system);
-	//	system->close();
-	//	system->release();
-	//}
 };
