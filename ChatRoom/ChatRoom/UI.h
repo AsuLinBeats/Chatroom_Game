@@ -123,7 +123,7 @@ namespace MyUI {
 
 			chatMessages->push_back(newMessage);
 			// send to server
-			std::string msg = std::string(std::string(inputsSender) + "|" + inputs);
+			std::string msg = std::string(std::string(inputsSender) + "|" + inputs + "\n");
 			
 			net.Send(msg);
 
@@ -241,10 +241,10 @@ namespace MyUI {
 		
 		ImGui::Begin("Connecting status");
 		if (net.isConnected) {
-			ImGui::TextColored(ImVec4(0, 1, 0, 1), "Connected");
+			ImGui::TextColored(ImVec4(0, 1, 0, 1), "Connected!");
 		}
 		else {
-			ImGui::TextColored(ImVec4(1, 0, 0, 1), "Disconnected");
+			ImGui::TextColored(ImVec4(1, 0, 0, 1), "Disconnected! Your message is local only");
 		}
 		/*ImGui::TextColored(net.close ?
 			ImVec4(0, 1, 0, 1) : ImVec4(1, 0, 0, 1),

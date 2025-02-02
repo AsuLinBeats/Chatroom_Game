@@ -130,9 +130,9 @@
 
 
 
+
 class Network {
-    // SOCKET clientSocket = INVALID_SOCKET;
-    inline static std::vector<std::string> messageQueue;
+    //inline static std::vector<std::string> messageQueue;
     inline static std::mutex queueMutex;
     SOCKET clientSocket = INVALID_SOCKET;
 
@@ -141,32 +141,92 @@ public:
     std::atomic<bool> close = false ;
     std::atomic<bool> isConnected = false ; 
 
-    void Send(std::string sentence) {
-        int count = 0;
-        while (!close) {
-            if (isConnected && !close) {
-                send(clientSocket, sentence.c_str(), sentence.size(), 0);
-                break;
-            }
+    void CloseConnection() {
+        close = true;
+        if (clientSocket != INVALID_SOCKET) {
+            closesocket(clientSocket);
+            clientSocket = INVALID_SOCKET;
         }
-        closesocket(clientSocket);
+        isConnected = false;
+    }
 
+    std::vector<std::string> messageQueue;
+    const size_t MAX_QUEUE_SIZE = 1000;
+
+    void AddMessage(const std::string& msg) {
+        std::lock_guard<std::mutex> lock(queueMutex);
+        if (messageQueue.size() >= MAX_QUEUE_SIZE) {
+            messageQueue.erase(messageQueue.begin());
+        }
+        messageQueue.push_back(msg);
+    }
+
+    void Send(std::string sentence) {
+        if (!isConnected || close) return;
+
+        int totalSent = 0;
+        while (totalSent < sentence.size()) {
+            int sent = send(clientSocket,
+                sentence.c_str() + totalSent,
+                sentence.size() - totalSent,
+                0);
+            if (sent == SOCKET_ERROR) {
+                if (WSAGetLastError() == WSAEWOULDBLOCK) continue;
+                CloseConnection();
+                return;
+            }
+            totalSent += sent;
+        }
     }
 
    
 
-    void Receive(SOCKET clientSocket) {
+    //void Receive(SOCKET clientSocket) {
 
-        char buffer[1024];
+    //    char buffer[1024];
+    //    while (!close) {
+    //        int bytes = recv(clientSocket, buffer, sizeof(buffer) - 1, 0);
+    //        if (bytes > 0) {
+    //            buffer[bytes] = 0;
+    //            std::lock_guard<std::mutex> lock(Network::queueMutex);
+    //            messageQueue.push_back(buffer);
+    //        }
+    //    }
+
+    //}
+
+    void Receive(SOCKET clientSocket) {
+        std::vector<char> buffer(4096);
+        std::string pending;
+
         while (!close) {
-            int bytes = recv(clientSocket, buffer, sizeof(buffer) - 1, 0);
+            int bytes = recv(clientSocket, &buffer[0], buffer.size(), 0);
             if (bytes > 0) {
-                buffer[bytes] = 0;
-                std::lock_guard<std::mutex> lock(Network::queueMutex);
-                messageQueue.push_back(buffer);
+                pending.append(buffer.begin(), buffer.begin() + bytes);
+
+                // 按消息边界分割
+                size_t pos;
+                while ((pos = pending.find('\n')) != std::string::npos) {
+                    std::string msg = pending.substr(0, pos);
+                    pending.erase(0, pos + 1);
+
+                    std::lock_guard<std::mutex> lock(queueMutex);
+                    messageQueue.push_back(msg);
+                }
+            }
+            else if (bytes == 0) {
+                // 正常关闭连接
+                CloseConnection();
+                break;
+            }
+            else {
+                // 错误处理
+                if (WSAGetLastError() != WSAEWOULDBLOCK) {
+                    CloseConnection();
+                }
+                break;
             }
         }
-
     }
 
     bool client() {
@@ -182,7 +242,7 @@ public:
         }
 
         // Create a socket
-        SOCKET clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         if (clientSocket == INVALID_SOCKET) {
             std::cerr << "Socket creation failed with error: " << WSAGetLastError() << std::endl;
             WSACleanup();
@@ -215,11 +275,12 @@ public:
         close = false;
         std::thread(&Network::Receive, this, clientSocket).detach();
 
-
-        WSACleanup();
         return true;
     }
-
+    ~Network() {
+       
+        WSACleanup();
+    }
     std::vector<std::string> GetMessages() {
         std::lock_guard<std::mutex> lock(queueMutex);
         auto copy = messageQueue;

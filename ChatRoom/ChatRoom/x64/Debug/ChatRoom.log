@@ -1,5 +1,8 @@
 ﻿  Main.cpp
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(148,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(171,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(203,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Main.cpp')
   
 C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Audio.h(50,37): warning C4305: '+=': truncation from 'double' to 'float'
