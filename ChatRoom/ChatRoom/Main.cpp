@@ -1,7 +1,7 @@
 // chatroom client
 
 #include"UI.h"
-// #include"Audio.h"
+#include"Audio.h"
 
 #include "ImGui/imconfig.h"
 #include "ImGui/imgui.h"
@@ -21,7 +21,7 @@
 struct Message {
     // link to server
     std::string sender; // the display name
-    
+
     std::string content;
     const char time;
     std::string IP; // the IP from client device
@@ -73,8 +73,8 @@ int main(int, char**)
 
 
     //! Audio initialisation
-    //Audio sfxSys;
-    //sfxSys.init();
+    Audio sfxSys;
+    sfxSys.init();
     // Create application window    
     //ImGui_ImplWin32_EnableDpiAwareness();
     WNDCLASSEXW wc = { sizeof(wc), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(nullptr), nullptr, nullptr, nullptr, nullptr, L"ImGui Example", nullptr };
@@ -108,7 +108,7 @@ int main(int, char**)
     ImGui_ImplWin32_Init(hwnd);
     ImGui_ImplDX11_Init(g_pd3dDevice, g_pd3dDeviceContext);
 
-  
+
     //io.Fonts->AddFontDefault();
     //io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\segoeui.ttf", 18.0f);
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
@@ -126,7 +126,7 @@ int main(int, char**)
     // Main loop
     // Audio sfxSys;
     //sfxSys.init();
-    
+
     bool done = false;
     bool running = true;
     bool isplaying = false;
@@ -167,75 +167,75 @@ int main(int, char**)
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
-    /*    sfxSys.playMusicPrivate();*/
-        //////////////////////////////////////////////////////////////////////////////////////
-      //! Drawing code
-  //      // control booleans
-		//static bool windows_open = true;
-		//static bool test = false;
-		//static int a = 0;
-		//static float b = 0.f;
-  //      static char butter[1024];
-  //      static bool privateChat = false;
+        /*    sfxSys.playMusicPrivate();*/
+            //////////////////////////////////////////////////////////////////////////////////////
+          //! Drawing code
+      //      // control booleans
+            //static bool windows_open = true;
+            //static bool test = false;
+            //static int a = 0;
+            //static float b = 0.f;
+      //      static char butter[1024];
+      //      static bool privateChat = false;
 
-  //      if (windows_open) {
-  //          ImGui::Begin("Chatroom", &windows_open);
+      //      if (windows_open) {
+      //          ImGui::Begin("Chatroom", &windows_open);
 
-		//	ImGui::Text(u8"你好");
-		//	ImGui::TextColored(ImColor(0,245,255,255), u8"Hello, world!");
-  //          ImGui::BulletText(u8"你好呀");
+            //	ImGui::Text(u8"你好");
+            //	ImGui::TextColored(ImColor(0,245,255,255), u8"Hello, world!");
+      //          ImGui::BulletText(u8"你好呀");
 
-  //          if (ImGui::Button(u8"按钮", ImVec2(50, 50))) {
-		//		MessageBoxA(NULL, "Hello, world!", "Hello", MB_OK);
-  //              sfxSys.playMusic(); // not work???
+      //          if (ImGui::Button(u8"按钮", ImVec2(50, 50))) {
+            //		MessageBoxA(NULL, "Hello, world!", "Hello", MB_OK);
+      //              sfxSys.playMusic(); // not work???
 
-  //          }
-		//	ImGui::SameLine();
-  //          if (ImGui::Button(u8"按钮2", ImVec2(50, 50))) {
-  //              MessageBoxA(NULL, "Hello, world!2", "Hello2", MB_OK);
-  //          }
-		//	ImGui::Checkbox(u8"复选框", &test);
+      //          }
+            //	ImGui::SameLine();
+      //          if (ImGui::Button(u8"按钮2", ImVec2(50, 50))) {
+      //              MessageBoxA(NULL, "Hello, world!2", "Hello2", MB_OK);
+      //          }
+            //	ImGui::Checkbox(u8"复选框", &test);
 
-		//	ImGui::RadioButton(u8"单选框0",&a,0);
-		//	ImGui::RadioButton(u8"单选框1",&a,1);
-		//	ImGui::RadioButton(u8"单选框2",&a,2);
+            //	ImGui::RadioButton(u8"单选框0",&a,0);
+            //	ImGui::RadioButton(u8"单选框1",&a,1);
+            //	ImGui::RadioButton(u8"单选框2",&a,2);
 
-		//	ImGui::DragFloat(u8"拖拽浮点", &b, 0.1f, 0.f, 6.f);
-		//	ImGui::SliderFloat(u8"滑动条", &b, 0.f, 6.f);
-  //          ImGui::InputText(u8"输入框", butter, sizeof(butter));
-
-
-  //          // Graphic
-		//	ImGui::GetForegroundDrawList()->AddLine(ImVec2(100, 100), ImVec2(100, 200), ImColor(255, 0, 0, 255),1.f);
-  //          
-  //          ImGui::GetBackgroundDrawList()->AddRectFilled(ImVec2(0, 0), ImVec2(300, 300), ImColor(240, 255, 255, 255),15.f);
-  //         
-  //          ImGui::GetBackgroundDrawList()->AddCircle(ImVec2(500, 500), 15.f, ImColor(255, 240, 255, 255));
-
-		//	ImGui::GetForegroundDrawList()->AddText(ImVec2(600, 600), ImColor(255, 0, 0, 255), "Hello, world!");
-  //          
-
-  //          // external rendering
-  //          ImGui::End();
-  //      }
-  //      
+            //	ImGui::DragFloat(u8"拖拽浮点", &b, 0.1f, 0.f, 6.f);
+            //	ImGui::SliderFloat(u8"滑动条", &b, 0.f, 6.f);
+      //          ImGui::InputText(u8"输入框", butter, sizeof(butter));
 
 
-		
-        
+      //          // Graphic
+            //	ImGui::GetForegroundDrawList()->AddLine(ImVec2(100, 100), ImVec2(100, 200), ImColor(255, 0, 0, 255),1.f);
+      //          
+      //          ImGui::GetBackgroundDrawList()->AddRectFilled(ImVec2(0, 0), ImVec2(300, 300), ImColor(240, 255, 255, 255),15.f);
+      //         
+      //          ImGui::GetBackgroundDrawList()->AddCircle(ImVec2(500, 500), 15.f, ImColor(255, 240, 255, 255));
+
+            //	ImGui::GetForegroundDrawList()->AddText(ImVec2(600, 600), ImColor(255, 0, 0, 255), "Hello, world!");
+      //          
+
+      //          // external rendering
+      //          ImGui::End();
+      //      }
+      //      
 
 
-        // myUI code
-        //if (!MyUI::RenderUI(sfxSys, isplaying)) {
-        //    running = false; // Exit if RenderUI signals to quit
-        //}
 
-        if (!MyUI::RenderUI(isplaying)) {
+
+
+
+            // myUI code
+            //if (!MyUI::RenderUI(sfxSys, isplaying)) {
+            //    running = false; // Exit if RenderUI signals to quit
+            //}
+
+        if (!MyUI::RenderUI(sfxSys, isplaying)) {
             running = false; // Exit if RenderUI signals to quit
         }
         // audio test
-        
-        
+
+
         // Rendering
         ImGui::Render();
         const float clear_color_with_alpha[4] = { clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w };

@@ -1,14 +1,7 @@
-﻿  imgui_widgets.cpp
-  Main.cpp
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(171,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'Main.cpp')
-  
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(203,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+﻿  Main.cpp
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(64,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Main.cpp')
   
 C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Main.cpp(29,21): warning C4244: 'initializing': conversion from 'DWORD' to 'const char', possible loss of data
-  UI.cpp
-  Generating Code...
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(179,1): warning C4715: 'MyUI::RegisterUI': not all control paths return a value
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(411,1): warning C4715: 'MyUI::RenderUI': not all control paths return a value
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(407,1): warning C4715: 'MyUI::RenderUI': not all control paths return a value
   ChatRoom.vcxproj -> C:\Users\Davi\source\Chatroom_Game\ChatRoom\x64\Debug\ChatRoom.exe
