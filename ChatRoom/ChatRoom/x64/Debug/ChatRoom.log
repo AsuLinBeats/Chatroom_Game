@@ -3,5 +3,5 @@ C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Network.h(64,33): warning C
   (compiling source file 'Main.cpp')
   
 C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\Main.cpp(29,21): warning C4244: 'initializing': conversion from 'DWORD' to 'const char', possible loss of data
-C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(407,1): warning C4715: 'MyUI::RenderUI': not all control paths return a value
+C:\Users\Davi\source\Chatroom_Game\ChatRoom\ChatRoom\UI.h(415,1): warning C4715: 'MyUI::RenderUI': not all control paths return a value
   ChatRoom.vcxproj -> C:\Users\Davi\source\Chatroom_Game\ChatRoom\x64\Debug\ChatRoom.exe

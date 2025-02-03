@@ -148,7 +148,6 @@
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="Network.h" />
-    <ClInclude Include="Server.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>

@@ -130,6 +130,15 @@ namespace MyUI {
         }
     }
 
+    void SendMessagesP(char* inputs, std::string inputsSender, std::vector<ChatMessage>* messages) {
+        if (inputs[0] != '\0') {
+            // Format the message using the new protocol:
+            std::string msg = "PRIVATE|" + std::string(inputsSender) + "|" + std::string(inputs) + "\n";
+            net.Send(msg);
+            // Clear the input buffer.
+            memset(inputs, 0, sizeof(inputs));
+        }
+    }
     // Send a system message locally.
     void SystemMessage() {
         static char SysInputs[512] = "";
@@ -356,8 +365,7 @@ namespace MyUI {
                 if (ImGui::Button("Send", ImVec2(50, 25))) {
                     // Send private message in the format:
                     // "PRIVATE|<targetUser>|<message>\n"
-                    std::string pmCommand = "PRIVATE|" + userSelected + "|" + std::string(privateInputs) + "\n";
-                    net.Send(pmCommand);
+                    SendMessagesP(privateInputs, userSelected, &privateChatMessages);
                     playsoundS(sfxSys);
                 }
                 ImGui::SetCursorPos(ImVec2(460, 350));
@@ -365,8 +373,8 @@ namespace MyUI {
                     DeleteMessage(privateInputs);
                 }
                 if (ImGui::IsKeyPressed(ImGuiKey_Enter, false)) {
-                    std::string pmCommand = "PRIVATE|" + userSelected + "|" + std::string(privateInputs) + "\n";
-                    net.Send(pmCommand);
+                    SendMessagesP(privateInputs, userSelected, &privateChatMessages);
+                    playsoundS(sfxSys);
                 }
                 ImGui::End();
             }
