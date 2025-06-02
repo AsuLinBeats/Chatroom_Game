@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\",
+  "WorkspaceRootPath": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Network.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Audio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Network.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Audio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29FBE165-9F40-4E25-AC23-1A6FA3F7D96A}|ChatRoom\\ChatRoom.vcxproj|solutionrelative:ChatRoom\\Audio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,39 +42,38 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Main.cpp",
-              "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Main.cpp",
+              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Main.cpp",
               "RelativeDocumentMoniker": "ChatRoom\\Main.cpp",
-              "ToolTip": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Main.cpp",
+              "ToolTip": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Main.cpp",
               "RelativeToolTip": "ChatRoom\\Main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAAOgAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-03T11:39:36.816Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Network.h",
-              "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h",
+              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h",
               "RelativeDocumentMoniker": "ChatRoom\\Network.h",
-              "ToolTip": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h",
+              "ToolTip": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Network.h",
               "RelativeToolTip": "ChatRoom\\Network.h",
               "ViewState": "AgIAAIQAAAAAAAAAAAAAAGsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-03T11:27:58.431Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-03T11:27:58.431Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "UI.h",
-              "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h",
+              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h",
               "RelativeDocumentMoniker": "ChatRoom\\UI.h",
-              "ToolTip": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h",
+              "ToolTip": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\UI.h",
               "RelativeToolTip": "ChatRoom\\UI.h",
-              "ViewState": "AgIAABoBAAAAAAAAAAAAACgBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFoBAAAAAAAAAAAAwGEBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-02-03T07:53:26.755Z",
               "EditorCaption": ""
@@ -83,9 +82,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Audio.h",
-              "DocumentMoniker": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Audio.h",
+              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Audio.h",
               "RelativeDocumentMoniker": "ChatRoom\\Audio.h",
-              "ToolTip": "C:\\Users\\Davi\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Audio.h",
+              "ToolTip": "C:\\Users\\u2100583\\source\\Chatroom_Game\\ChatRoom\\ChatRoom\\Audio.h",
               "RelativeToolTip": "ChatRoom\\Audio.h",
               "ViewState": "AgIAABcAAAAAAAAAAAAAACoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
