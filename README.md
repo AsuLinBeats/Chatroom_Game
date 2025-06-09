@@ -40,3 +40,43 @@ namespace MyUI {
 }
 
 ```
+
+# English:
+# Simple Multithreaded Chatroom (Client)
+A multithreaded TCP chat server client built with C++ and Winsock, designed for learning the fundamentals of network communication, client management, and message exchange. It communicates with the server via TCP and uses ImGui to render the user interface.
+
+## Features
+- **Server Status Monitoring**: Displays real-time server status through an ImGui window
+- **User Registration**: A registration window pops up on launch; users can enter a name to join the chatroom. Names are updated in real time on the server list
+- **UI Built with ImGui**: The entire interface is constructed using ImGui
+- **Notification System via FMOD**: Users receive FMOD-driven audio notifications when someone joins or leaves the chatroom
+- **User List Synchronization**: The server continuously records and updates the current users
+- **Garbage Collection**: Monitors the number of messages in real-time and clears them to free memory when approaching the threshold
+
+## Message Protocol
+- BROADCAST|<message> — Sends a public message to all users.
+
+## Tech Stack
+- C++14
+- C++ Multithreading
+- Winsock
+- ImGui
+- FMOD
+
+## Showcase
+![Chat Window](Image/Imgui1.png)  
+![Private Chat Window](Image/imgui2.png)  
+![System Status](Image/imgui3.png)  
+![Garbage Collection](Image/imgui4.png)
+
+## Code Structure Example:
+```cpp
+namespace MyUI {
+    Network net;                     // Global network instance
+    std::mutex messageMutex;         // Mutex for network message thread
+    class ChatMessage;               // Chat message encapsulation class
+    class ChatBox;                   // Public chat box
+   
+    void RenderUI(Audio& sfxSys);    // Main UI rendering function
+    void SendMessages(...);          // Send public messages
+}
